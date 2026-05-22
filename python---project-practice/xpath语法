@@ -1,0 +1,17 @@
+XPath 是一门在 XML 文档中查找信息的语言。XPath 可用来在 XML 文档中对元素和属性进行遍历。
+
+在python中 我们使用 lxml中导入 etree 使用
+
+data = etree.HTML(response.text) 将返回的字符串信息 以 HTML的方式赋值为 data
+etree.parse()  用来解析本地项目中的 html 文件
+
+ul = data.xpath("//ul[@class='s-hotsearch-content']/li")
+// 表示多个层级 / 相邻层级  div[2] 表示第二个 div 标签
+ul[@class='属性名'] 定位到指定的 ul 标签
+
+
+name = li.xpath(".//span[@class='title-content-title']/text()")
+当前节点下的任意 span 标签，text() 获取当前指定标签下的文本数据
+
+url = data.xpath("//div[@class='title-text c-font-medium c-color-t']/../@href")
+.. 表示父节点 @herf 获取标签的属性

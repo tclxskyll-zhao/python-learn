@@ -1,0 +1,59 @@
+selenium:
+- 可以便捷进行 登录 操作
+- 可以爬取页面中所有的资源包括 动态加载的数据
+
+是一个 模拟浏览器自动化 的模块
+
+从 Selenium 4 开始，在浏览器驱动的管理方式上发生了变化：
+Selenium 4 尝试自动检测系统中安装的浏览器版本，并下载相应的驱动程序，这意味着用户不再需要手动下载和设置驱动程序路径，除非他们需要特定版本的驱动程序。
+
+
+基础用法：
+
+#查找页面元素
+
+# 通过 ID 查找元素
+search_box = driver.find_element("id", "kw")
+# 通过类名查找元素
+search_button = driver.find_element("class name", "s_ipt")
+# 通过标签名查找元素
+links = driver.find_elements("tag name", "a")
+
+
+#模拟用户操作
+
+# 在搜索框中输入文本
+search_box.send_keys("Selenium Python")
+# 点击搜索按钮
+search_button.click()
+
+#获取元素的属性和文本
+
+# 获取元素的文本
+element_text = search_box.text
+# 获取元素的属性值
+element_attribute = search_box.get_attribute("placeholder")
+
+
+设置无头浏览器
+#无可视化界面
+from selenium.webdriver.chrome.options import Options
+#实现无可视化操作
+chrome_options=Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+
+
+# 基本防检测设置
+chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+chrome_options.add_experimental_option("useAutomationExtension", False)
+
+bro=webdriver.Chrome(options=chrome_options)
+
+更多 selenium 操作查看: https://www.runoob.com/selenium/selenium-advanced.html
+
+
+
+
+
